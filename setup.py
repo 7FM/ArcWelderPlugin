@@ -29,7 +29,6 @@ from setuptools.command.build_ext import build_ext
 #from distutils.command.build_ext import build_ext
 from distutils.ccompiler import CCompiler
 from distutils.unixccompiler import UnixCCompiler
-from distutils.bcppcompiler import BCPPCompiler
 from distutils.cygwinccompiler import CygwinCCompiler
 from distutils.version import LooseVersion
 from distutils.sysconfig import customize_compiler
@@ -120,11 +119,6 @@ compiler_opts = {
         "extra_link_args": [],
         "define_macros": [],
     },
-    BCPPCompiler.compiler_type: {
-        "extra_compile_args": ["-O3", "-std=c++11"],
-        "extra_link_args": [],
-        "define_macros": [],
-    },
     CygwinCCompiler.compiler_type: {
         "extra_compile_args": ["-O3", "-std=c++11"],
         "extra_link_args": [],
@@ -142,11 +136,6 @@ if DEBUG:
         UnixCCompiler.compiler_type: {
             "extra_compile_args": ["-g"],
             "extra_link_args": ["-g"],
-            "define_macros": [],
-        },
-        BCPPCompiler.compiler_type: {
-            "extra_compile_args": [],
-            "extra_link_args": [],
             "define_macros": [],
         },
         CygwinCCompiler.compiler_type: {
