@@ -29,7 +29,6 @@ from setuptools.command.build_ext import build_ext
 #from distutils.command.build_ext import build_ext
 from distutils.ccompiler import CCompiler
 from distutils.unixccompiler import UnixCCompiler
-from distutils.msvccompiler import MSVCCompiler
 from distutils.bcppcompiler import BCPPCompiler
 from distutils.cygwinccompiler import CygwinCCompiler
 from distutils.version import LooseVersion
@@ -116,11 +115,6 @@ compiler_opts = {
         "extra_link_args": [],
         "define_macros": [],
     },
-    MSVCCompiler.compiler_type: {
-        "extra_compile_args": ["/O2", "/GL", "/Gy", "/MD", "/EHsc"],
-        "extra_link_args": [],
-        "define_macros": [],
-    },
     UnixCCompiler.compiler_type: {
         "extra_compile_args": ["-O3", "-std=c++11", "-Wno-unknown-pragmas", '-v'],
         "extra_link_args": [],
@@ -144,11 +138,6 @@ if DEBUG:
             "extra_compile_args": [],
             "extra_link_args": [],
             "define_macros": [("DEBUG_chardet", "1")],
-        },
-        MSVCCompiler.compiler_type: {
-            "extra_compile_args": ["/EHsc", "/Z7"],
-            "extra_link_args": ["/DEBUG"],
-            "define_macros": [],
         },
         UnixCCompiler.compiler_type: {
             "extra_compile_args": ["-g"],
